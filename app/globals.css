@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+/* ── Design tokens ── */
+:root {
+  --bg-base:       #05060E;
+  --bg-card:       #09091A;
+  --bg-elevated:   #0E0F20;
+  --border-subtle: #141629;
+  --border-muted:  #1E2040;
+  --accent-1:      #6366F1;
+  --accent-2:      #8B5CF6;
+  --accent-3:      #A78BFA;
+  --text-primary:  #F1F5F9;
+  --text-secondary:#94A3B8;
+  --text-muted:    #475569;
+}
+
+* { box-sizing: border-box; padding: 4px; margin: 1px; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: rgba(99,102,241,0.28);
+  color: #F1F5F9;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #1E2040; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #6366F1; }
+
+/* ── Grid background ── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Text gradients ── */
+.text-gradient {
+  background: linear-gradient(135deg, #818CF8 0%, #A78BFA 55%, #C4B5FD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Glass ── */
+.glass {
+  background: rgba(9,9,26,0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid rgba(99,102,241,0.1);
+}
+
+.glass-card {
+  background: rgba(9,9,26,0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #1E2040;
+  transition: border-color 0.3s cubic-bezier(0.22,1,0.36,1),
+              background 0.3s cubic-bezier(0.22,1,0.36,1),
+              transform 0.3s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.glass-card:hover {
+  border-color: rgba(99,102,241,0.28);
+  background: rgba(99,102,241,0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(99,102,241,0.14);
+}
+
+/* ── Code syntax ── */
+.code-keyword { color: #A78BFA; }
+.code-string  { color: #6EE7B7; }
+.code-prop    { color: #93C5FD; }
+.code-var     { color: #FDE68A; }
+.code-comment { color: #3D4270; font-style: italic; }
+.code-bracket { color: #CBD5E1; }
+
+/* ── Glow ── */
+.glow-sm { box-shadow: 0 0 24px rgba(99,102,241,0.18); }
+.glow-md { box-shadow: 0 0 48px rgba(99,102,241,0.14), 0 0 96px rgba(139,92,246,0.06); }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.25), transparent);
+}
+
+/* ── Keyframes ── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-16px) rotate(0.4deg); }
+  66%       { transform: translateY(-8px) rotate(-0.4deg); }
+}
+
+@keyframes cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes draw-line {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Animation utilities ── */
+.animate-float-y        { animation: float-y 7s ease-in-out infinite; }
+.animate-cursor-blink   { animation: cursor-blink 2s step-end infinite; }
+.animate-fade-up        { animation: fade-up 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+.animate-float          { animation: float 6s ease-in-out infinite; }
+.animate-draw-line      { animation: draw-line 1.2s cubic-bezier(0.22,1,0.36,1) forwards; transform-origin: top; }
+
+/* ── Animated gradient on name letters ── */
+@keyframes letter-color-wave {
+  0%,100% { color: #818CF8; }
+  33%      { color: #C4B5FD; }
+  66%      { color: #A78BFA; }
+}
+
+.letter-wave {
+  animation: letter-color-wave 5s ease infinite;
+  display: inline-block;
+}
+
+/* ── Soft animated gradient text (used on name line 2) ── */
+@keyframes gradient-flow {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* ── Navbar moving bottom accent ── */
+@keyframes navbar-line-move {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* ── Navbar background aurora shift ── */
+@keyframes navbar-aurora {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* ── Marquee animation (3 copies — translateX ±33.33% = 1 copy) ── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3333%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-33.3333%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
