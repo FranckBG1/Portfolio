@@ -28,7 +28,7 @@ const TECH_ICONS: Record<string, string> = {
   Terraform:     "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg",
   Ansible:       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg",
   /* simpleicons: colored logos visible on dark backgrounds */
-  AWS:           "https://cdn.simpleicons.org/amazonaws/FF9900",
+  AWS:           "",
   "Vertex AI":   "https://cdn.simpleicons.org/googlegemini/4285F4",
   "Google Cloud":"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
   Jenkins:       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
@@ -152,7 +152,7 @@ export function Stack() {
         style={{ background: "rgba(99,102,241,0.04)" }}
       />
 
-      <div className="relative max-w-5xl mx-auto px-6">
+      <div className="relative max-w-8xl mx-auto px-6">
 
         {/* ── Heading + toggle ── */}
         <motion.div

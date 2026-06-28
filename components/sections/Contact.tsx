@@ -45,7 +45,7 @@ export function Contact() {
         style={{ background: "rgba(99,102,241,0.05)" }}
       />
 
-      <div className="relative max-w-4xl mx-auto px-6">
+      <div className="relative max-w-8xl mx-auto px-6">
 
         {/* Label */}
         <motion.span
@@ -76,12 +76,12 @@ export function Contact() {
             </h2>
 
             <p className="text-slate-500 leading-relaxed max-w-sm">
-              Ouvert à une alternance, un CDI ou une mission freelance. Je réponds rapidement — contacte-moi par le moyen qui te convient.
+              Ouvert à un CDI, CDD ou une mission freelance. Je réponds rapidement — contacte-moi par le moyen qui te convient.
             </p>
 
             {/* Availability chips */}
             <div className="flex flex-wrap gap-2 text-xs font-mono">
-              {["Alternance", "CDI", "Remote OK", "Mobilité nationale"].map((tag) => (
+              {["CDI", "Remote OK", "Mobilité nationale"].map((tag) => (
                 <span
                   key={tag}
                   className="px-3 py-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-400"

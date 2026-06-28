@@ -22,7 +22,7 @@ export const certifications: Certification[] = [
     name:   "Cloud Practitioner",
     issuer: "Amazon Web Services",
     status: "in-progress",
-    badge:  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg",
+    badge:  "",
     href:   "https://aws.amazon.com/certification/certified-cloud-practitioner/",
   },
   {

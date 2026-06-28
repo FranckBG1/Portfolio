@@ -34,7 +34,7 @@ export function Footer() {
 
 
         {/* Col 3 — Social links */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 md:col-start-3">
           <p className="text-[10px] font-mono font-semibold tracking-[0.2em] uppercase text-indigo-400 mb-1">
             Réseaux
           </p>

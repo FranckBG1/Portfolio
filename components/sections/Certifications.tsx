@@ -19,7 +19,7 @@ export function Certifications() {
         style={{ background: "rgba(139,92,246,0.04)" }}
       />
 
-      <div className="relative max-w-4xl mx-auto px-6">
+      <div className="relative max-w-8xl mx-auto px-6">
 
         {/* Heading */}
         <motion.div
