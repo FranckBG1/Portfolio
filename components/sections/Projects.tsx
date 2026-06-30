@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ChevronDown, ArrowUpRight } from "lucide-react";
+import { LucideGithub, ChevronDown, ArrowUpRight, X, Play } from "lucide-react";
 import { projects } from "@/data/projects";
 import { EASE, cn } from "@/lib/utils";
 
@@ -13,9 +13,11 @@ const catStyles: Record<string, { label: string; accent: string; badge: string; 
 };
 
 export function Projects() {
-  const [expanded, setExpanded] = useState<string | null>("stock-management");
+  const [expanded,   setExpanded]   = useState<string | null>("stock-management");
+  const [videoModal, setVideoModal] = useState<string | null>(null);
 
   return (
+    <>
     <section id="projects" className="relative py-32 md:py-44 overflow-hidden">
       <div
         aria-hidden
@@ -151,19 +153,35 @@ export function Projects() {
 
                         {/* Links */}
                         <div className="flex gap-3 mt-6 pt-5 border-t border-[#1A1D35]">
-                          <a
-                            href={project.demoUrl}
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(99,102,241,0.4)]"
-                            style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
-                          >
-                            <ArrowUpRight className="w-3.5 h-3.5" /> Demo
-                          </a>
-                          <a
-                            href={project.githubUrl}
-                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-slate-400 border border-[#1E2040] hover:border-indigo-500/35 hover:text-white hover:bg-indigo-500/5 transition-all duration-200"
-                          >
-                            <Github className="w-3.5 h-3.5" /> GitHub
-                          </a>
+                          {project.videoUrl ? (
+                            <button
+                              onClick={() => setVideoModal(project.videoUrl!)}
+                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(99,102,241,0.4)]"
+                              style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
+                            >
+                              <Play className="w-3.5 h-3.5 fill-white" /> Demo
+                            </button>
+                          ) : project.demoUrl && project.demoUrl !== "#" ? (
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(99,102,241,0.4)]"
+                              style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
+                            >
+                              <ArrowUpRight className="w-3.5 h-3.5" /> Demo
+                            </a>
+                          ) : null}
+                          {project.githubUrl && project.githubUrl !== "#" && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-slate-400 border border-[#1E2040] hover:border-indigo-500/35 hover:text-white hover:bg-indigo-500/5 transition-all duration-200"
+                            >
+                              <LucideGithub className="w-3.5 h-3.5" /> GitHub
+                            </a>
+                          )}
                         </div>
                       </div>
                     </motion.div>
@@ -175,5 +193,44 @@ export function Projects() {
         </div>
       </div>
     </section>
+
+      {/* ── Video modal ── */}
+      <AnimatePresence>
+        {videoModal && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setVideoModal(null)}
+          >
+            <button
+              onClick={() => setVideoModal(null)}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-white/30 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <motion.div
+              className="w-full max-w-4xl"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.25, ease: EASE }}
+              onClick={e => e.stopPropagation()}
+            >
+              <video
+                src={videoModal}
+                controls
+                autoPlay
+                className="w-full rounded-2xl shadow-2xl"
+                style={{ maxHeight: "75vh" }}
+              />
+              <p className="text-center text-sm text-slate-500 mt-4 font-mono tracking-wide">
+                Zenflow — Pitch &amp; Demo · GCPU Agentic AI Hackathon 2025
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

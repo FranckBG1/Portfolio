@@ -6,6 +6,7 @@ export interface Project {
   result: string;
   stack: string[];
   demoUrl?: string;
+  videoUrl?: string;
   githubUrl?: string;
   previewImage?: string;
   featured: boolean;
@@ -24,6 +25,7 @@ export interface Highlight {
   suffix?: string;
   description: string;
   icon: string;
+  loop?: boolean;
 }
 
 export interface NewsEvent {
@@ -32,8 +34,10 @@ export interface NewsEvent {
   date: string;
   location: string;
   description: string;
+  result?: string;
   photos: string[];
-  label: "meetup" | "conference" | "hackathon" | "certification" | "milestone";
+  videos?: string[];
+  label: "hackathon" | "forum" | "challenge" | "meetup" | "conference" | "certification" | "milestone";
 }
 
 export type NavItem = {

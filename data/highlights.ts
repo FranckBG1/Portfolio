@@ -3,10 +3,11 @@ import type { Highlight } from "@/types";
 export const highlights: Highlight[] = [
   {
     label: "Projects Delivered",
-    value: 4,
+    value: 20,
     suffix: "+",
     description: "End-to-end projects built from design to deployment",
     icon: "Package",
+    loop: true,
   },
   {
     label: "Stack Coverage",
@@ -21,10 +22,12 @@ export const highlights: Highlight[] = [
     icon: "Container",
   },
   {
-    label: "Code Quality",
-    value: "Tests",
-    description: "Unit, integration testing and clean code practices",
-    icon: "ShieldCheck",
+    label: "IT Awards",
+    value: 6,
+    suffix: "+",
+    description: "Distinctions et reconnaissances dans le domaine IT",
+    icon: "Trophy",
+    loop: true,
   },
 ];
 

@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { Package, Layers, Container, ShieldCheck } from "lucide-react";
+import { Package, Layers, Container, Trophy } from "lucide-react";
 import { highlights, strengthTags } from "@/data/highlights";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { EASE } from "@/lib/utils";
 
-const iconMap: Record<string, React.ElementType> = { Package, Layers, Container, ShieldCheck };
+const iconMap: Record<string, React.ElementType> = { Package, Layers, Container, Trophy };
 
 export function Highlights() {
   return (
@@ -66,7 +66,7 @@ export function Highlights() {
                   </div>
                   <p className="text-4xl sm:text-5xl font-black text-white leading-none">
                     {typeof h.value === "number"
-                      ? <AnimatedCounter value={h.value} suffix={h.suffix ?? ""} />
+                      ? <AnimatedCounter value={h.value} suffix={h.suffix ?? ""} loop={h.loop} loopDelay={30000} />
                       : <span className="text-gradient">{h.value}</span>
                     }
                   </p>
