@@ -6,6 +6,7 @@ export interface Project {
   result: string;
   stack: string[];
   period?: string;
+  screenshots?: string[];
   demoUrl?: string;
   videoUrl?: string;
   githubUrl?: string;

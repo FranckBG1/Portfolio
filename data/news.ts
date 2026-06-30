@@ -14,7 +14,7 @@ export const newsEvents: NewsEvent[] = [
       "Deux équipes ESIGELEC Poitiers dans le Top 5 à la finale au siège de Google Paris; La vidéo présente notre pitch avec demo d'utilisation de la solution zenflow qu'on a proposée",
     result: "Top 5 · Nationale",
     photos: [],
-    videos: ["/videos/20-Zenflow-Pitch+Demo.mp4"],
+    videos: ["https://res.cloudinary.com/dppbwwgv/video/upload/v1782838050/20-zenflow-pitch-demo_37o5sj66_gegrz6.mp4"],
     label: "hackathon",
   },
   {
@@ -32,7 +32,7 @@ export const newsEvents: NewsEvent[] = [
       "/images/events/Image_hack_gcp1_.jpg",
       "/images/events/Image_hack_gcp1_2.jpg",
     ],
-    videos: ["/videos/video_hack_gcp1.mp4"],
+    videos: ["https://res.cloudinary.com/dppbwwgv/video/upload/v1782835405/video_hack_gcp1_mo8hpt.mp4"],
     label: "hackathon",
   },
   {
@@ -49,7 +49,7 @@ export const newsEvents: NewsEvent[] = [
       "La vidéo présente la démo de notre solution.",
     result: "🥈 2ème place",
     photos: [],
-    videos: ["/videos/demo-groupe2_.mp4"],
+    videos: ["https://res.cloudinary.com/dppbwwgv/video/upload/v1782835405/demo-groupe2__bhmfbb.mp4"],
     label: "hackathon",
   },
   {
@@ -71,7 +71,7 @@ export const newsEvents: NewsEvent[] = [
       "/images/events/C0894T01.JPG",
       "/images/events/C0898T01.JPG",
     ],
-    videos: ["/videos/hack4.MP4"],
+    videos: ["https://res.cloudinary.com/dppbwwgv/video/upload/v1782835406/hack4_gtuh5g.mp4"],
     label: "hackathon",
   },
 
@@ -111,7 +111,7 @@ export const newsEvents: NewsEvent[] = [
       "/images/events/IMG_1995.jpeg",
       "/images/events/IMG_1970.jpeg",
     ],
-    videos: ["/videos/IMG_2020.MOV"],
+    videos: ["https://res.cloudinary.com/dppbwwgv/video/upload/v1782835407/IMG_2020_sfznhl.mov"],
     label: "forum",
   },
   {
@@ -183,7 +183,7 @@ export const newsEvents: NewsEvent[] = [
       "Défi central : concevoir l'algorithme le plus efficace possible pour guider un robot planteur de graines dans un potager — un problème d'optimisation combinatoire nécessitant une bonne modélisation et un code robuste sur plusieurs jeux de données. " +
       "Première participation pour moi : 11e au classement final. Une découverte du format compétition, un premier repère pour mesurer où j'en suis — et une bonne raison de revenir l'année suivante.",
     photos: ["/images/events/Image (4).jpg"],
-    videos: ["/videos/codingup.MP4"],
+    videos: ["https://res.cloudinary.com/dppbwwgv/video/upload/v1782835405/codingup_s12dez.mp4"],
     label: "challenge",
   },
   {

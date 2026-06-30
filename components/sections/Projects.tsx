@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LucideGithub, ChevronDown, ArrowUpRight, X, Play } from "lucide-react";
+import { LucideGithub, ChevronDown, ArrowUpRight, X, Play, Images, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { EASE, cn } from "@/lib/utils";
 
@@ -13,8 +13,10 @@ const catStyles: Record<string, { label: string; accent: string; badge: string; 
 };
 
 export function Projects() {
-  const [expanded,   setExpanded]   = useState<string | null>("stock-management");
-  const [videoModal, setVideoModal] = useState<{ src: string; title: string } | null>(null);
+  const [expanded,       setExpanded]       = useState<string | null>("stock-management");
+  const [videoModal,     setVideoModal]     = useState<{ src: string; title: string } | null>(null);
+  const [screenModal,    setScreenModal]    = useState<{ shots: string[]; title: string } | null>(null);
+  const [screenIndex,    setScreenIndex]    = useState(0);
 
   return (
     <>
@@ -164,6 +166,14 @@ export function Projects() {
                             >
                               <Play className="w-3.5 h-3.5 fill-white" /> Demo
                             </button>
+                          ) : project.screenshots && project.screenshots.length > 0 ? (
+                            <button
+                              onClick={() => { setScreenModal({ shots: project.screenshots!, title: project.title }); setScreenIndex(0); }}
+                              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(99,102,241,0.4)]"
+                              style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
+                            >
+                              <Images className="w-3.5 h-3.5" /> Demo
+                            </button>
                           ) : project.demoUrl && project.demoUrl !== "#" ? (
                             <a
                               href={project.demoUrl}
@@ -230,6 +240,76 @@ export function Projects() {
               <p className="text-center text-sm text-slate-500 mt-4 font-mono tracking-wide">
                 {videoModal.title}
               </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Screenshot gallery modal ── */}
+      <AnimatePresence>
+        {screenModal && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/92 backdrop-blur-md"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setScreenModal(null)}
+          >
+            <button
+              onClick={() => setScreenModal(null)}
+              className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-slate-400 hover:text-white hover:border-white/30 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <motion.div
+              className="w-full max-w-5xl flex flex-col items-center gap-4"
+              initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.25, ease: EASE }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Main image */}
+              <div className="relative w-full">
+                <img
+                  src={screenModal.shots[screenIndex]}
+                  alt={`${screenModal.title} — screenshot ${screenIndex + 1}`}
+                  className="w-full rounded-2xl shadow-2xl object-contain"
+                  style={{ maxHeight: "70vh" }}
+                />
+                {/* Prev / Next */}
+                {screenModal.shots.length > 1 && (
+                  <>
+                    <button
+                      onClick={() => setScreenIndex(i => (i - 1 + screenModal.shots.length) % screenModal.shots.length)}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white hover:bg-black/80 transition-colors"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => setScreenIndex(i => (i + 1) % screenModal.shots.length)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 text-white hover:bg-black/80 transition-colors"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Counter + label */}
+              <p className="text-center text-sm text-slate-500 font-mono tracking-wide">
+                {screenModal.title} · {screenIndex + 1} / {screenModal.shots.length} · <span className="text-slate-600">données de test</span>
+              </p>
+
+              {/* Thumbnails */}
+              <div className="flex gap-2 flex-wrap justify-center">
+                {screenModal.shots.map((src, i) => (
+                  <button key={i} onClick={() => setScreenIndex(i)}>
+                    <img
+                      src={src}
+                      className={cn("h-14 rounded-lg object-cover border-2 transition-all", i === screenIndex ? "border-indigo-500" : "border-transparent opacity-50 hover:opacity-80")}
+                    />
+                  </button>
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         )}
