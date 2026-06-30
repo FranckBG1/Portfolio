@@ -95,6 +95,11 @@ export function Projects() {
                         {cat.label}
                       </span>
                       <h3 className="text-base font-semibold text-slate-100">{project.title}</h3>
+                      {project.professional && (
+                        <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+                          ✦ Expérience pro
+                        </span>
+                      )}
                       {project.period && (
                         <span className="ml-auto text-xs font-mono text-slate-600 shrink-0">{project.period}</span>
                       )}
