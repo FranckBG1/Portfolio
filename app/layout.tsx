@@ -13,24 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Franck BG — Junior Full-Stack Software Engineer",
+  title: "Franck NKOMA BAYEMA — Ingénieur Full-Stack",
   description:
-    "Junior full-stack software engineer based in Paris. Building web apps, mobile solutions, APIs, and deployment pipelines. Open to junior engineering roles.",
+    "Ingénieur full-stack en alternance — Java, Spring Boot, Flutter, Angular, Python, Docker, Cloud. Basé à Poitiers, mobilité nationale.",
   keywords: [
-    "software engineer",
-    "full-stack developer",
-    "junior developer",
-    "Paris",
-    "Next.js",
+    "ingénieur full-stack",
+    "développeur full-stack",
     "Flutter",
-    "Node.js",
     "Spring Boot",
+    "Angular",
+    "Python",
+    "Docker",
+    "Poitiers",
+    "Next.js",
   ],
-  authors: [{ name: "Franck " }],
+  authors: [{ name: "Franck NKOMA BAYEMA" }],
   openGraph: {
-    title: "Franck BG — Junior Full-Stack Software Engineer",
+    title: "Franck NKOMA BAYEMA — Ingénieur Full-Stack",
     description:
-      "Junior full-stack software engineer based in Paris. Building web apps, mobile solutions, APIs, and deployment pipelines.",
+      "Ingénieur full-stack en alternance — Java, Spring Boot, Flutter, Angular, Python, Docker, Cloud. Basé à Poitiers, mobilité nationale.",
     type: "website",
   },
 };
