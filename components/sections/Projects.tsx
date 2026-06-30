@@ -6,7 +6,7 @@ import { projects } from "@/data/projects";
 import { EASE, cn } from "@/lib/utils";
 
 const catStyles: Record<string, { label: string; accent: string; badge: string; text: string; border: string }> = {
-  web:     { label: "WEB",     accent: "bg-indigo-500",  badge: "bg-indigo-500/8",  text: "text-indigo-300",  border: "border-indigo-500/20"  },
+  web:     { label: "WEB FULLSTACK", accent: "bg-indigo-500",  badge: "bg-indigo-500/8",  text: "text-indigo-300",  border: "border-indigo-500/20"  },
   mobile:  { label: "MOBILE",  accent: "bg-violet-500",  badge: "bg-violet-500/8",  text: "text-violet-300",  border: "border-violet-500/20"  },
   backend: { label: "BACKEND", accent: "bg-blue-500",    badge: "bg-blue-500/8",    text: "text-blue-300",    border: "border-blue-500/20"    },
   ai:      { label: "AI",      accent: "bg-purple-500",  badge: "bg-purple-500/8",  text: "text-purple-300",  border: "border-purple-500/20"  },
@@ -14,7 +14,7 @@ const catStyles: Record<string, { label: string; accent: string; badge: string; 
 
 export function Projects() {
   const [expanded,   setExpanded]   = useState<string | null>("stock-management");
-  const [videoModal, setVideoModal] = useState<string | null>(null);
+  const [videoModal, setVideoModal] = useState<{ src: string; title: string } | null>(null);
 
   return (
     <>
@@ -93,6 +93,9 @@ export function Projects() {
                         {cat.label}
                       </span>
                       <h3 className="text-base font-semibold text-slate-100">{project.title}</h3>
+                      {project.period && (
+                        <span className="ml-auto text-xs font-mono text-slate-600 shrink-0">{project.period}</span>
+                      )}
                     </div>
 
                     {/* Context preview (closed state only) */}
@@ -155,7 +158,7 @@ export function Projects() {
                         <div className="flex gap-3 mt-6 pt-5 border-t border-[#1A1D35]">
                           {project.videoUrl ? (
                             <button
-                              onClick={() => setVideoModal(project.videoUrl!)}
+                              onClick={() => setVideoModal({ src: project.videoUrl!, title: project.title })}
                               className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(99,102,241,0.4)]"
                               style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
                             >
@@ -218,14 +221,14 @@ export function Projects() {
               onClick={e => e.stopPropagation()}
             >
               <video
-                src={videoModal}
+                src={videoModal.src}
                 controls
                 autoPlay
                 className="w-full rounded-2xl shadow-2xl"
                 style={{ maxHeight: "75vh" }}
               />
               <p className="text-center text-sm text-slate-500 mt-4 font-mono tracking-wide">
-                Zenflow — Pitch &amp; Demo · GCPU Agentic AI Hackathon 2025
+                {videoModal.title}
               </p>
             </motion.div>
           </motion.div>

@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, FileText } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { EASE } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -19,15 +19,30 @@ const navItems: NavItem[] = [
 
 const sectionIds = navItems.map((i) => i.href.replace("#", ""));
 
+const CV_OPTIONS = [
+  { label: "🇫🇷 Français", href: "/cv_NKOMA_Franck_Fullstack_Developpeur.pdf" },
+  { label: "🇬🇧 English",  href: "/cv_Franck_NKOMA_Software_Engineer.pdf" },
+];
+
 export function Navbar() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
-  const activeSection             = useActiveSection(sectionIds);
+  const [scrolled,   setScrolled]   = useState(false);
+  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [cvOpen,     setCvOpen]     = useState(false);
+  const cvRef                       = useRef<HTMLDivElement>(null);
+  const activeSection               = useActiveSection(sectionIds);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (cvRef.current && !cvRef.current.contains(e.target as Node)) setCvOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
 
   const go = (href: string) => {
@@ -70,8 +85,6 @@ export function Navbar() {
                     )}
                   >
                     {item.label}
-
-                    {/* Underline animée */}
                     <span
                       className={cn(
                         "h-px rounded-full transition-all duration-300",
@@ -80,8 +93,6 @@ export function Navbar() {
                           : "w-0 group-hover:w-full bg-gradient-to-r from-indigo-500/60 to-violet-500/60"
                       )}
                     />
-
-                    {/* Dot actif */}
                     {active && (
                       <motion.span
                         layoutId="nav-dot"
@@ -97,28 +108,59 @@ export function Navbar() {
 
           {/* Droite : CTA + hamburger */}
           <div className="flex items-center justify-end gap-4">
-            <motion.a
-              href="mailto:franckbayema2@gmail.com"
+
+            {/* CV dropdown — desktop */}
+            <motion.div
+              ref={cvRef}
+              className="relative hidden md:block"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1,  scale: 1   }}
               transition={{ duration: 0.5, delay: 0.4, ease: EASE }}
-              className="hidden md:inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-xl font-semibold text-white relative overflow-hidden group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(99,102,241,0.55)]"
-              style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
             >
-              {/* Shimmer sweep on hover */}
-              <span
-                className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"
-                style={{
-                  background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)",
-                }}
-              />
-              {/* Ping dot */}
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-50" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
-              </span>
-              <span className="relative">Hire me</span>
-            </motion.a>
+              <button
+                onClick={() => setCvOpen(!cvOpen)}
+                className="inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-xl font-semibold text-white relative overflow-hidden group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(99,102,241,0.55)]"
+                style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
+              >
+                <span
+                  className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)" }}
+                />
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-50" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
+                </span>
+                <span className="relative">Mon CV</span>
+                <ChevronDown className={cn("relative w-3.5 h-3.5 transition-transform duration-200", cvOpen && "rotate-180")} />
+              </button>
+
+              <AnimatePresence>
+                {cvOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1    }}
+                    exit={{    opacity: 0, y: 6, scale: 0.97 }}
+                    transition={{ duration: 0.15, ease: EASE }}
+                    className="absolute right-0 mt-2 w-44 rounded-xl border border-[#1E2040] shadow-xl overflow-hidden"
+                    style={{ background: "#0D0F1E" }}
+                  >
+                    {CV_OPTIONS.map(({ label, href }) => (
+                      <a
+                        key={href}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setCvOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 text-sm text-slate-300 hover:text-white hover:bg-indigo-500/10 transition-colors duration-150"
+                      >
+                        <FileText className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                        {label}
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -127,7 +169,7 @@ export function Navbar() {
             >
               <AnimatePresence mode="wait" initial={false}>
                 {menuOpen
-                  ? <motion.span key="x"   initial={{ rotate: -90, opacity:0 }} animate={{ rotate:0, opacity:1 }} exit={{ rotate:90,  opacity:0 }} transition={{ duration:0.2 }}><X    size={20}/></motion.span>
+                  ? <motion.span key="x"    initial={{ rotate: -90, opacity:0 }} animate={{ rotate:0, opacity:1 }} exit={{ rotate:90,  opacity:0 }} transition={{ duration:0.2 }}><X    size={20}/></motion.span>
                   : <motion.span key="menu" initial={{ rotate:  90, opacity:0 }} animate={{ rotate:0, opacity:1 }} exit={{ rotate:-90, opacity:0 }} transition={{ duration:0.2 }}><Menu size={20}/></motion.span>
                 }
               </AnimatePresence>
@@ -165,14 +207,20 @@ export function Navbar() {
                   </li>
                 );
               })}
-              <li className="pt-2 pb-1">
-                <a
-                  href="mailto:franckbayema2@gmail.com"
-                  className="flex justify-center py-3.5 rounded-xl text-sm font-semibold text-white"
-                  style={{ background: "linear-gradient(135deg,#6366F1,#8B5CF6)" }}
-                >
-                  Hire me
-                </a>
+              <li className="pt-2 pb-1 flex flex-col gap-2">
+                {CV_OPTIONS.map(({ label, href }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold text-white border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 transition-colors"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    {label}
+                  </a>
+                ))}
               </li>
             </ul>
           </motion.div>

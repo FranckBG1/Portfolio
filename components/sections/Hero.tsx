@@ -164,7 +164,7 @@ export function Hero() {
                     <img
                       src="/Photo.png"
                       alt="Franck"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top scale-125"
                       onError={() => setPhotoError(true)}
                     />
                   ) : (

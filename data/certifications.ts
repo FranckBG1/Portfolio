@@ -43,11 +43,19 @@ export const certifications: Certification[] = [
     detail: "Score 835 / 990",
   },
   {
+    id:     "flutter-essentials",
+    name:   "L'essentiel de Flutter",
+    issuer: "LinkedIn Learning",
+    status: "active",
+    badge:  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
+    href:   "https://www.linkedin.com/learning/certificates/120289bd2428239a471915665648121bcfe98c5dd7f5fb0012a843c054d2accc?trk=share_certificate",
+  },
+  {
     id:     "inr",
     name:   "Responsible Design of Digital Services",
     issuer: "Institut du Numérique Responsable",
     status: "active",
     badge:  "",
-    href:   "https://institutnr.org/",
+    href:   "https://www.linkedin.com/in/franck-nkoma/details/certifications/",
   },
 ];

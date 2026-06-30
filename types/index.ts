@@ -5,6 +5,7 @@ export interface Project {
   contribution: string;
   result: string;
   stack: string[];
+  period?: string;
   demoUrl?: string;
   videoUrl?: string;
   githubUrl?: string;

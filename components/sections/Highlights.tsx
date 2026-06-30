@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { Package, Layers, Container, Trophy } from "lucide-react";
+import { Package, Layers, Briefcase, Trophy } from "lucide-react";
 import { highlights, strengthTags } from "@/data/highlights";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { EASE } from "@/lib/utils";
 
-const iconMap: Record<string, React.ElementType> = { Package, Layers, Container, Trophy };
+const iconMap: Record<string, React.ElementType> = { Package, Layers, Briefcase, Trophy };
 
 export function Highlights() {
   return (

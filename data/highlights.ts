@@ -16,10 +16,10 @@ export const highlights: Highlight[] = [
     icon: "Layers",
   },
   {
-    label: "Deployment",
-    value: "Docker",
-    description: "Containerized deployments with Nginx and cloud platforms",
-    icon: "Container",
+    label: "Expérience Entreprise",
+    value: "2 ans",
+    description: "Missions en grande autonomie dans une startup — projets concrets livrés pour de vrais clients",
+    icon: "Briefcase",
   },
   {
     label: "IT Awards",
@@ -36,7 +36,7 @@ export const strengthTags = [
   "Mobile Apps (Flutter)",
   "REST API Design",
   "Backend Architecture",
-  "Docker & Deployment",
+  "Cloud & Deployment",
   "Software Quality",
   "Team Collaboration",
   "Problem Solving",

@@ -123,7 +123,7 @@ export function Certifications() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: EASE, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center text-[11px] text-slate-700 font-mono mt-8"
+          className="text-center text-xs text-slate-400 font-mono mt-8 tracking-wide"
         >
           Clique sur une certification pour voir la page officielle · Liens Credly disponibles sur mon LinkedIn
         </motion.p>

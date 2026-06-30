@@ -2,6 +2,20 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "wave-up-health",
+    title: "Application Mobile — Wave Up Health",
+    context:
+      "Projet d'alternance au sein de Wave Up Health (Poitiers) — startup spécialisée dans la santé connectée. Objectif : développer une application mobile permettant la visualisation et l'interaction avec des données géospatiales et des environnements 3D, destinée aux professionnels de santé et aux patients.",
+    contribution:
+      "Développement mobile Flutter de bout en bout : intégration de cartographie interactive, rendu 3D, consommation d'APIs JavaScript via bridges natifs, et pipeline de livraison via TestFlight. Conteneurisation des services associés avec Docker. Participation aux cycles de sprints, code reviews et livraisons continues en environnement professionnel.",
+    result:
+      "Application mobile fonctionnelle en production, livrée en continu sur TestFlight. Montée en compétence rapide sur un stack mobile avancé (Flutter, 3D, géospatial) dans un contexte d'entreprise réel avec des contraintes de qualité et de délais.",
+    stack: ["Flutter", "Dart", "JavaScript", "Docker", "TestFlight", "REST API"],
+    period: "Sept. 2024 – présent",
+    featured: true,
+    category: "mobile",
+  },
+  {
     id: "stock-management",
     title: "Stock & Sales Management App",
     context:
@@ -11,6 +25,7 @@ export const projects: Project[] = [
     result:
       "Eliminated manual tracking errors, reduced reconciliation time, and gave the business owner a clear daily overview of stock levels and sales performance.",
     stack: ["Java", "Spring Boot", "Angular", "REST API", "PostgreSQL"],
+    period: "Mars 2026",
     demoUrl: "#",
     githubUrl: "#",
     featured: true,
@@ -26,6 +41,7 @@ export const projects: Project[] = [
     result:
       "Prototype fonctionnel livré avec chiffrement bout-en-bout, ouverture en moins de 2 secondes, et zéro donnée stockée en clair. Tests backend couvrant les flux d'authentification et de chiffrement.",
     stack: ["Python", "Flask", "PySide6", "SQLite", "SQLCipher", "Docker", "HTML", "CSS"],
+    period: "Nov. 2025",
     demoUrl: "https://github.com/FranckBG1/SecureVault",
     githubUrl: "https://github.com/FranckBG1/SecureVault",
     featured: true,
@@ -41,6 +57,7 @@ export const projects: Project[] = [
     result:
       "Delivered a functioning backend on time, with a clean REST API that the frontend team could integrate without friction.",
     stack: ["Python", "Flask", "REST API", "SQLite", "Pytest"],
+    period: "Nov. 2025",
     demoUrl: "#",
     githubUrl: "#",
     featured: true,
@@ -56,6 +73,7 @@ export const projects: Project[] = [
     result:
       "Système multi-agents opérationnel : détection de crise sans rupture conversationnelle, intégration réelle Google Calendar via Apps Script, taux de complétion de collecte mesurable. Top 5 national — GCPU Agentic AI Hackathon Google Cloud 2025, parmi 50 équipes issues de 25 écoles.",
     stack: ["Python", "Flask", "Gemini API", "Google Calendar API", "Vertex AI", "JavaScript", "HTML", "CSS"],
+    period: "Oct. 2025",
     demoUrl: "https://github.com/FranckBG1/agentic-ia-agent",
     videoUrl: "/videos/20-Zenflow-Pitch+Demo.mp4",
     githubUrl: "https://github.com/FranckBG1/agentic-ia-agent",
@@ -72,10 +90,42 @@ export const projects: Project[] = [
     result:
       "Application fonctionnelle de détection d'émotions en temps réel via webcam, embarquable comme iframe dans n'importe quelle interface mobile ou web. Composant autonome et réutilisable au sein de l'écosystème Zenflow.",
     stack: ["HTML", "JavaScript", "TensorFlow.js", "Python", "Flask", "OpenCV", "Docker"],
+    period: "Oct. 2025",
     demoUrl: "https://github.com/FranckBG1/emotion-app",
     githubUrl: "https://github.com/FranckBG1/emotion-app",
     featured: true,
     category: "ai",
+  },
+  {
+    id: "greenai",
+    title: "GreenAI — Classification d'Images Frugale · ALTEN",
+    context:
+      "Hackathon organisé par ALTEN sur le thème « Passer de l'IA de performance à l'IA de pertinence ». Objectif : concevoir le classifieur d'images le plus frugal possible, applicable à des secteurs critiques (médecine, industrie, environnement), en maîtrisant l'empreinte carbone du modèle comme contrainte centrale — pas seulement la précision.",
+    contribution:
+      "Développement en équipe d'un pipeline de classification d'images basé sur le dataset VISA, avec tracking de l'empreinte carbone en temps réel via CodeCarbon à chaque run d'entraînement. Conception d'une architecture scalable permettant de switcher entre frameworks ML. Déploiement d'une interface de démo interactive via Streamlit pour tester le modèle en live.",
+    result:
+      "2ème place du hackathon — solution reconnue pour son équilibre optimal entre précision du modèle et sobriété computationnelle. Approche Green AI appliquée concrètement : calcul du coût carbone intégré au workflow, pas en post-traitement.",
+    stack: ["Python", "Streamlit", "CodeCarbon", "Deep Learning", "Candle"],
+    period: "Fév. 2025",
+    videoUrl: "/videos/demo-groupe2_.mp4",
+    githubUrl: "https://github.com/FranckBG1/GreenAI_Groupe2",
+    featured: true,
+    category: "ai",
+  },
+  {
+    id: "fossball",
+    title: "Fossball — Gestion de Tournois de Baby-Foot",
+    context:
+      "Un des premiers projets fullstack réalisés dans le cadre de ma formation. Objectif : concevoir une application web complète de gestion de tournois de baby-foot — utilisateurs, matchs, classements et statistiques en temps réel. Un projet d'apprentissage qui posait les premières briques d'une architecture MVC avec Flask.",
+    contribution:
+      "Développement fullstack de l'application : modèle de données SQLite, backend Flask avec authentification par session, controllers pour la logique métier (tournois, matchs, classements), et templates HTML/CSS/JS pour l'interface. Architecture organisée en models / controllers / templates / static.",
+    result:
+      "Application fonctionnelle de gestion de tournois avec authentification, suivi des statistiques joueurs et leaderboard. L'un de mes tout premiers projets fullstack — quelques erreurs de débutant subsistent, mais il reflète le point de départ d'une progression visible à travers les projets suivants.",
+    stack: ["Python", "Flask", "SQLite", "HTML", "CSS", "JavaScript"],
+    period: "2024",
+    githubUrl: "https://github.com/FranckBG1/Projet_conception_sites_web_fossball_pour_gestion_babyfoot",
+    featured: true,
+    category: "web",
   },
   {
     id: "portfolio",
@@ -87,6 +137,7 @@ export const projects: Project[] = [
     result:
       "Portfolio entièrement responsive et déployable, avec plus de 10 événements documentés, 5 projets détaillés et des animations Framer Motion optimisées. Ce que vous lisez en ce moment.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Docker"],
+    period: "2026",
     demoUrl: "https://github.com/FranckBG1/Portfolio",
     githubUrl: "https://github.com/FranckBG1/Portfolio",
     featured: true,

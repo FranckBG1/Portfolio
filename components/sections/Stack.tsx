@@ -108,10 +108,10 @@ function MarqueeBand({
     <div className="flex items-center">
 
       {/* ── Label column ── */}
-      <div className="w-24 sm:w-32 shrink-0 pr-5 text-right border-r border-indigo-500/10 py-3">
-        <p className="text-[9px] sm:text-[10px] font-mono font-bold tracking-[0.18em] uppercase text-indigo-400/70 leading-5">
+      <div className="w-28 sm:w-36 shrink-0 pr-6 text-right border-r border-indigo-500/20 py-3">
+        <p className="text-xs sm:text-sm font-mono font-bold tracking-[0.15em] uppercase text-indigo-400 leading-5">
           {line1}
-          {line2 && <><br /><span className="text-indigo-400/40">{line2}</span></>}
+          {line2 && <><br /><span className="text-indigo-300/60">{line2}</span></>}
         </p>
       </div>
 
@@ -255,6 +255,13 @@ export function Stack() {
           )}
 
         </AnimatePresence>
+
+        <p className="text-center text-xs text-slate-500 font-mono mt-10 tracking-wide">
+          Les technos{" "}
+          <span className="text-indigo-300 font-semibold">mises en avant</span>{" "}
+          sont celles que je pratique au quotidien — les autres font partie de mon bagage technique, acquises et mobilisées en projet.
+        </p>
+
       </div>
     </section>
   );

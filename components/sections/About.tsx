@@ -149,6 +149,10 @@ export function About() {
           </div>
 
           {/* ── Right: bento grid ── */}
+          <div className="flex flex-col gap-4">
+          <p className="text-sm font-mono font-semibold tracking-[0.2em] uppercase text-indigo-400">
+            Soft Skills
+          </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4">
             {strengths.map((s, i) => {
               const cs      = cardStyles[i];
@@ -244,6 +248,7 @@ export function About() {
                 </motion.div>
               );
             })}
+          </div>
           </div>
         </div>
       </div>
