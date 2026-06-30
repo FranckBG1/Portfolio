@@ -72,7 +72,7 @@ function SlideMedia({ item, cat }: { item: MediaItem; cat: typeof CAT[string] })
     if (isYouTube(item.src)) {
       return (
         <div className="relative w-full h-full">
-          <img src={ytThumb(item.src)} alt="" className="w-full h-full object-cover" />
+          <img src={ytThumb(item.src)} alt="" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center bg-black/30">
             <div className="w-12 h-12 rounded-full bg-black/65 border border-white/20 flex items-center justify-center">
               <Play className="w-5 h-5 text-white fill-white ml-0.5" />
@@ -86,7 +86,7 @@ function SlideMedia({ item, cat }: { item: MediaItem; cat: typeof CAT[string] })
       <div className="relative w-full h-full">
         <video
           src={item.src}
-          preload="metadata"
+          preload="none"
           muted
           playsInline
           className="w-full h-full object-cover"
@@ -99,7 +99,7 @@ function SlideMedia({ item, cat }: { item: MediaItem; cat: typeof CAT[string] })
       </div>
     );
   }
-  return <img src={item.src} alt="" className="w-full h-full object-cover" />;
+  return <img src={item.src} alt="" loading="lazy" className="w-full h-full object-cover" />;
 }
 
 /* ══════════════════════════════════════
@@ -110,7 +110,7 @@ function ThumbItem({ item }: { item: MediaItem }) {
     if (isYouTube(item.src)) {
       return (
         <div className="relative w-full h-full">
-          <img src={ytThumb(item.src)} alt="" className="w-full h-full object-cover" />
+          <img src={ytThumb(item.src)} alt="" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center bg-black/40">
             <Play className="w-3 h-3 text-white fill-white" />
           </div>
@@ -119,14 +119,14 @@ function ThumbItem({ item }: { item: MediaItem }) {
     }
     return (
       <div className="relative w-full h-full">
-        <video src={item.src} preload="metadata" muted playsInline className="w-full h-full object-cover" />
+        <video src={item.src} preload="none" muted playsInline className="w-full h-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center bg-black/40">
           <Play className="w-3 h-3 text-white fill-white" />
         </div>
       </div>
     );
   }
-  return <img src={item.src} alt="" className="w-full h-full object-cover" />;
+  return <img src={item.src} alt="" loading="lazy" className="w-full h-full object-cover" />;
 }
 
 /* ══════════════════════════════════════
