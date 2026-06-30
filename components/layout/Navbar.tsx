@@ -26,9 +26,10 @@ const CV_OPTIONS = [
 ];
 
 export function Navbar() {
-  const [scrolled,   setScrolled]   = useState(false);
-  const [menuOpen,   setMenuOpen]   = useState(false);
-  const [cvOpen,     setCvOpen]     = useState(false);
+  const [scrolled,      setScrolled]      = useState(false);
+  const [menuOpen,      setMenuOpen]      = useState(false);
+  const [cvOpen,        setCvOpen]        = useState(false);
+  const [cvMobileOpen,  setCvMobileOpen]  = useState(false);
   const cvRef                       = useRef<HTMLDivElement>(null);
   const activeSection               = useActiveSection(sectionIds);
 
@@ -209,16 +210,23 @@ export function Navbar() {
                 );
               })}
               <li className="pt-2 pb-1 flex flex-col gap-2">
-                {CV_OPTIONS.map(({ label, href }) => (
+                <button
+                  onClick={() => setCvMobileOpen(!cvMobileOpen)}
+                  className="flex items-center justify-between px-5 py-3.5 rounded-xl text-sm font-semibold text-white border border-indigo-500/30 bg-indigo-500/10"
+                >
+                  <span className="flex items-center gap-2"><FileText className="w-3.5 h-3.5" /> Mon CV</span>
+                  <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", cvMobileOpen && "rotate-180")} />
+                </button>
+                {cvMobileOpen && CV_OPTIONS.map(({ label, href }) => (
                   <a
                     key={href}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => setMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold text-white border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 transition-colors"
+                    onClick={() => { setMenuOpen(false); setCvMobileOpen(false); }}
+                    className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm text-slate-300 border border-[#1E2040] bg-[#0D0F1E] hover:text-white hover:bg-indigo-500/10 transition-colors"
                   >
-                    <FileText className="w-3.5 h-3.5" />
+                    <FileText className="w-3.5 h-3.5 text-indigo-400" />
                     {label}
                   </a>
                 ))}
